@@ -1,0 +1,20 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "aspyatkin/ubuntu-18.04-server"
+  config.vm.network "forwarded_port", guest: 5505, host: 15505
+
+
+  config.vm.provision "ansible-installer", type: "shell" do |init|
+    init.path = "vagrant-ansible-installer.sh"
+    run = "once"
+  end
+
+  config.vm.provision "nginx", type: "ansible" do |ansible|
+    ansible.verbose = "vvv"
+    ansible.playbook = "../ansible/roles/playbook.yml"
+    run = "always"
+  end
+
+end

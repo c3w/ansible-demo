@@ -1,0 +1,18 @@
+---
+- name: install_nagios
+  apt:
+    pkg: [nginx-light]
+    state: present
+
+- name: nginx_started
+  service:
+    name: nginx
+    state: started
+
+- name: prep_html_tree ## move to common? ##c3w##
+  file:
+    path: "{{ html_dir }}"
+    state: directory
+    owner: "{{ html_owner }}"
+    group: "{{ html_owner }}"
+    mode: "{{ html_perms }}"

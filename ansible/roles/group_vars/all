@@ -1,0 +1,8 @@
+---
+# nginx
+
+nginx_service: nginx_service
+nginx_port: 5505
+html_dir: /var/www/html
+html_owner: www-data
+html_perms: 0755

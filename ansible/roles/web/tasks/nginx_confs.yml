@@ -1,0 +1,4 @@
+---
+- name: nginx_config
+  template: src=maintenance_page.conf.j2 dest=/etc/nginx/sites-available/default
+  notify: nginx_reload

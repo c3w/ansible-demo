@@ -1,0 +1,18 @@
+---
+- name: nginx_config
+  template: src=maintenance_page.conf.j2 dest=/etc/nginx/sites-available/default
+- name: html_maintenance_page_dir
+  file:
+    path: "{{ html_dir }}/maintenance_page"
+    state: directory
+    owner: "{{ html_owner }}"
+    group: "{{ html_owner }}"
+    mode: "{{ html_perms }}"
+
+- name: maintenance_page
+  copy:
+    src: "files/html/maintenance_page/"
+    dest: "{{ html_dir }}/maintenance_page"
+    owner: "{{ html_owner }}"
+    group: "{{ html_owner }}"
+    mode: "{{ html_perms }}"

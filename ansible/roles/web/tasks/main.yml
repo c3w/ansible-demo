@@ -1,0 +1,5 @@
+---
+- include: nginx_install.yml
+- include: nginx_confs.yml
+- include: maintenance_page.yml
+- include: services.yml
